@@ -7,8 +7,8 @@
   const CLIENT_ID              = 'CLIENT_ID';
   const CLIENT_SECRET          = 'CLIENT_SECRET';
   const REDIRECT_URI           = 'REDIRECT_URI';
-  const AUTHORIZATION_ENDPOINT = 'https://www.parasut.com/oauth/authorize';
-  const TOKEN_ENDPOINT         = 'https://www.parasut.com/oauth/token';
+  const AUTHORIZATION_ENDPOINT = 'https://api.parasut.com/oauth/authorize';
+  const TOKEN_ENDPOINT         = 'https://api.parasut.com/oauth/token';
   $client = new OAuth2\Client(CLIENT_ID, CLIENT_SECRET);
 
   if (!isset($_GET['code']))
@@ -35,7 +35,7 @@
     $client->setAccessToken($accessToken);
 
     // example api call
-    $response = $client->fetch('https://www.parasut.com/api/v1/me');
+    $response = $client->fetch('https://api.parasut.com/v1/me');
     var_dump($response, $response['result']);
     echo "<br /><br /><br />";
 
@@ -45,7 +45,7 @@
     $info = $response['result'];
     print_r($info);
     $client->setAccessToken($info['access_token']);
-    $response = $client->fetch('https://www.parasut.com/api/v1/33/sales_invoices');
+    $response = $client->fetch('https://api.parasut.com/v1/33/sales_invoices');
     var_dump($response, $response['result']);
   }
   die;
